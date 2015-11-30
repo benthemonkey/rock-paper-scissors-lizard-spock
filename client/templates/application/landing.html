@@ -1,0 +1,32 @@
+<template name="landing">
+  <div class="jumbotron">
+    <div class="row text-center">
+      <div class="col-xs-6 col-sm-offset-1 col-sm-2">
+        <h1><i class="fa fa-hand-rock-o"></i></h1>
+        <h3>Rock</h3>
+      </div>
+      <div class="col-xs-6 col-sm-2">
+        <h1><i class="fa fa-hand-paper-o"></i></h1>
+        <h3>Paper</h3>
+      </div>
+      <div class="col-xs-6 col-sm-2">
+        <h1><i class="fa fa-hand-scissors-o"></i></h1>
+        <h3>Scissors</h3>
+      </div>
+      <div class="col-xs-6 col-sm-2">
+        <h1><i class="fa fa-hand-lizard-o"></i></h1>
+        <h3>Lizard</h3>
+      </div>
+      <div class="col-sm-2">
+        <h1><i class="fa fa-hand-spock-o"></i></h1>
+        <h3>Spock</h3>
+      </div>
+    </div>
+    {{#if currentUser}}
+    <div id="start" class="btn btn-lg btn-primary btn-block">Find a Match</div>
+    {{else}}
+    <h2 class="text-center">Sign in / Join to get started</h2>
+    {{/if}}
+  </div>
+  {{> matchList}}
+</template>

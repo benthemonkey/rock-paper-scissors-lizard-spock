@@ -1,0 +1,18 @@
+<template name="matchList">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title text-center">Matches in Progress</h4>
+    </div>
+    {{#if Template.subscriptionsReady}}
+      <ul class="list-group">
+        {{#each matches}}
+          {{> matchItem}}
+        {{/each}}
+      </ul>
+    {{else}}
+      <div class="panel-body">
+        <i class="fa fa-spinner fa-spin"></i>
+      </div>
+    {{/if}}
+  </div>
+</template>
