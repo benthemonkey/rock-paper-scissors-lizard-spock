@@ -1,0 +1,36 @@
+{
+  "name": "rpsls",
+  "version": "1.0.0",
+  "description": "",
+  "main": "rpsls.js",
+  "scripts": {
+    "test": "standard"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benthemonkey/rock-paper-scissors-lizard-spock.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/benthemonkey/rock-paper-scissors-lizard-spock/issues"
+  },
+  "homepage": "https://github.com/benthemonkey/rock-paper-scissors-lizard-spock#readme",
+  "devDependencies": {
+    "babel-eslint": "^4.1.6",
+    "standard": "^5.4.1"
+  },
+  "standard": {
+    "parser": "babel-eslint",
+    "globals": [
+      "RPSLS",
+      "Meteor",
+      "Mongo",
+      "FlowRouter",
+      "BlazeLayout",
+      "RandomOpponentMatcher",
+      "check"
+    ]
+  }
+}
