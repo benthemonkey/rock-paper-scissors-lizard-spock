@@ -1,6 +1,6 @@
 // Fixture data
 if (RPSLS.Collections.Matches.find().count() === 0) {
-  let now = new Date().getTime()
+  let now = new Date()
 
   // create two users
   let alice = 'Alice'
