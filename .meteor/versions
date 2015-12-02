@@ -13,6 +13,10 @@ blaze-html-templates@1.0.1
 blaze-tools@1.0.4
 boilerplate-generator@1.0.4
 bootswatch:cosmo@3.3.4_2
+browser-policy@1.0.5
+browser-policy-common@1.0.4
+browser-policy-content@1.0.6
+browser-policy-framing@1.0.6
 caching-compiler@1.0.0
 caching-html-compiler@1.0.2
 callback-hook@1.0.4
@@ -82,6 +86,7 @@ stylus@2.511.1
 templating@1.1.5
 templating-tools@1.0.0
 themeteorchef:bert@2.1.0
+tmeasday:publish-counts@0.7.2
 tracker@1.0.9
 ui@1.0.8
 underscore@1.0.4

@@ -24,15 +24,19 @@
   "standard": {
     "parser": "babel-eslint",
     "globals": [
-      "RPSLS",
-      "Meteor",
-      "Mongo",
-      "Accounts",
-      "Template",
-      "FlowRouter",
+      "$",
+      "_",
       "BlazeLayout",
-      "RandomOpponentMatcher",
-      "check"
+      "check",
+      "Counts",
+      "FlowRouter",
+      "Meteor",
+      "moment",
+      "Mongo",
+      "RPSLS",
+      "Session",
+      "Template",
+      "Tracker"
     ]
   }
 }

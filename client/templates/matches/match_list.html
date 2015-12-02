@@ -7,6 +7,8 @@
       <ul class="list-group">
         {{#each matches}}
           {{> matchItem}}
+        {{else}}
+          <li class="list-group-item">None</li>
         {{/each}}
       </ul>
     {{else}}

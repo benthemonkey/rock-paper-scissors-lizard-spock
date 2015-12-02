@@ -1,18 +1,23 @@
 Template.landing.helpers({
-  onlineCount: function () {
-    return Meteor.users.find({ 'status.online': true }).count()
+  searching: function () {
+    return Session.get('searching')
+  },
+  mostRecentMatch: function () {
+    return Session.get('mostRecentMatchFromNow')
   }
 })
 
 Template.landing.events({
   'click #start': function () {
-    let btn = $(this)
+    // already searching
+    if (Session.get('searching')) {
+      return
+    }
 
-    btn.button('loading')
     Session.set('searching', true)
 
     let matchTimeout = Meteor.setTimeout(function () {
-      btn.button('reset')
+      Session.set('searching', false)
     }, 30000)
 
     Meteor.call('startMatch', function (err, res) {
@@ -37,5 +42,14 @@ Template.landing.events({
 })
 
 Template.landing.onCreated(function () {
-  this.subscribe('userStatus')
+  this.subscribe('activeUsers')
+  this.subscribe('mostRecentMatch')
+
+  Meteor.setInterval(function () {
+    let mostRecent = RPSLS.Collections.Matches.findOne()
+
+    if (mostRecent) {
+      Session.set('mostRecentMatchFromNow', moment(mostRecent.started).fromNow())
+    }
+  }, 1000)
 })

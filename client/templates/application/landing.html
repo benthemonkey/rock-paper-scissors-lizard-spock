@@ -22,14 +22,25 @@
         <h3>Spock</h3>
       </div>
     </div>
-    {{!<h3 class="text-center">
-      <span class="label label-info">Users Online: {{onlineCount\}\}</span>
-    </h3>}}
     {{#if currentUser}}
-    <div id="start" class="btn btn-lg btn-primary btn-block" data-loading-text="Trying to find a match (30 secs)...">Find a Match</div>
+    <div id="start" class="btn btn-lg btn-primary btn-block">
+      {{#if searching}}Trying to find a match (30 secs)...{{else}}Find a Match{{/if}}
+    </div>
     {{else}}
     <h2 class="text-center">Sign in / Join to get started</h2>
     {{/if}}
   </div>
-  {{> matchList}}
+  <div class="row">
+    <div class="col-sm-6">
+      {{> matchList}}
+    </div>
+    <div class="col-sm-6">
+      <h3 class="text-center">
+        <span class="label label-info">Active Users: {{getPublishedCount 'activeUsers'}}</span>
+      </h3>
+      <h3 class="text-center">
+        <span class="label label-info">Last Match Played: {{mostRecentMatch}}</span>
+      </h3>
+    </div>
+  </div>
 </template>

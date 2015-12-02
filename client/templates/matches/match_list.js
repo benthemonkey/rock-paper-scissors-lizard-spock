@@ -7,3 +7,5 @@ Template.matchList.helpers({
 Template.matchList.onCreated(function () {
   this.subscribe('currentMatches')
 })
+
+Template.registerHelper('matchTitle', (players) => (players[0] + ' vs. ' + players[1]))
