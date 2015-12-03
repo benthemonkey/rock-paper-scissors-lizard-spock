@@ -7,10 +7,14 @@ Meteor.publish('mostRecentMatch', function () {
 })
 
 Meteor.publish('match', function (matchId) {
+  check(matchId, String)
+
   return RPSLS.Collections.Matches.find({ _id: matchId })
 })
 
 Meteor.publish('matchRounds', function (matchId) {
+  check(matchId, String)
+
   return RPSLS.Collections.Rounds.find({ matchId: matchId })
 })
 

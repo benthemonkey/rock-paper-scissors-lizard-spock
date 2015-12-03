@@ -1,11 +1,14 @@
 Template.landing.helpers({
-  searching: function () {
-    return Session.get('searching')
-  },
-  mostRecentMatch: function () {
-    return Session.get('mostRecentMatchFromNow')
-  }
+  searching: () => Session.get('searching'),
+  mostRecentMatch: () => Session.get('mostRecentMatchFromNow')
 })
+
+let searchTimeout
+let directToMatchPage = (matchId) => {
+  Meteor.clearTimeout(searchTimeout)
+  Session.set('searching', false)
+  FlowRouter.go('matchPage', { matchId })
+}
 
 Template.landing.events({
   'click #start': function () {
@@ -16,23 +19,22 @@ Template.landing.events({
 
     Session.set('searching', true)
 
-    let matchTimeout = Meteor.setTimeout(function () {
+    searchTimeout = Meteor.setTimeout(function () {
       Session.set('searching', false)
     }, 30000)
 
-    Meteor.call('startMatch', function (err, res) {
+    Meteor.call('startMatch', function (err, matchId) {
       if (err) {
         return
       }
 
-      if (res) {
-        FlowRouter.go('matchPage', { matchId: res })
-        Meteor.clearTimeout(matchTimeout)
+      if (matchId) {
+        directToMatchPage(matchId)
       } else {
         RPSLS.Collections.Matches.find().observe({
           added: function (match) {
             if (Session.get('searching') && match.players.indexOf(Meteor.user().username) !== -1) {
-              FlowRouter.go('matchPage', { matchId: match._id })
+              directToMatchPage(match._id)
             }
           }
         })

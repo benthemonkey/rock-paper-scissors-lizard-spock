@@ -1,2 +1,38 @@
 <template name="matchPage">
+  {{#with match}}
+    <h1 class="text-center">{{matchTitle players}}</h1>
+    <p>Pick a move:</p>
+    <div class="row">
+      <div class="col-xs-6 col-sm-offset-1 col-sm-2">
+        <div class="btn btn-primary btn-block btn-lg" data-move="rock">
+          <i class="fa fa-hand-rock-o"></i><br>
+          Rock
+        </div>
+      </div>
+      <div class="col-xs-6 col-sm-2">
+        <div class="btn btn-primary btn-block btn-lg" data-move="paper">
+          <i class="fa fa-hand-paper-o"></i><br>
+          Paper
+        </div>
+      </div>
+      <div class="col-xs-6 col-sm-2">
+        <div class="btn btn-primary btn-block btn-lg" data-move="scissors">
+          <i class="fa fa-hand-scissors-o"></i><br>
+          Scissors
+        </div>
+      </div>
+      <div class="col-xs-6 col-sm-2">
+        <div class="btn btn-primary btn-block btn-lg" data-move="lizard">
+          <i class="fa fa-hand-lizard-o"></i><br>
+          Lizard
+        </div>
+      </div>
+      <div class="col-sm-2">
+        <div class="btn btn-primary btn-block btn-lg" data-move="spock">
+          <i class="fa fa-hand-spock-o"></i><br>
+          Spock
+        </div>
+      </div>
+    </div>
+  {{/with}}
 </template>
