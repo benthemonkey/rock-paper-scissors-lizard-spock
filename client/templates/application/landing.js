@@ -38,14 +38,11 @@ Template.landing.events({
 Template.landing.onCreated(function () {
   this.subscribe('activeUsers')
   this.subscribe('mostRecentMatch')
-
-  if (Meteor.user()) {
-    this.subscribe('myRounds')
-  }
+  this.subscribe('rounds')
 
   RPSLS.Collections.Rounds.find().observe({
     added: function (round) {
-      if (round.players.indexOf(Meteor.user().username) !== -1) {
+      if (Meteor.user() && round.players.indexOf(Meteor.user().username) !== -1) {
         directToMatchPage()
       }
     }

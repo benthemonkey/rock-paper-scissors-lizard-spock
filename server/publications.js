@@ -1,5 +1,5 @@
 Meteor.publish('currentRounds', function () {
-  return RPSLS.Collections.Matches.find({ active: true })
+  return RPSLS.Collections.Rounds.find({})
 })
 
 Meteor.publish('mostRecentMatch', function () {
@@ -13,6 +13,10 @@ Meteor.publish('match', function (matchId) {
 })
 
 Meteor.publish('myRounds', function () {
+  if (!this.userId) {
+    return []
+  }
+
   let username = Meteor.users.findOne({ _id: this.userId }).username
   check(username, String)
 

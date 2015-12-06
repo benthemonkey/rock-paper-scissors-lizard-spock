@@ -20,18 +20,19 @@ browser-policy
 accounts-password
 check
 audit-argument-checks
+random
 
 kadira:flow-router
 kadira:blaze-layout
 arillo:flow-router-helpers
 
+fourseven:scss
 bootswatch:cosmo
 ian:accounts-ui-bootstrap-3
 fortawesome:fontawesome
+themeteorchef:bert
 
+tmeasday:publish-counts
 mizzao:user-status
 momentjs:moment
-themeteorchef:bert
-tmeasday:publish-counts
-random
 erasaur:meteor-lodash

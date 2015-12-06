@@ -1,11 +1,13 @@
 Template.matchList.helpers({
   matches: function () {
-    return RPSLS.Collections.Matches.find({ active: true }, { sort: { played: -1 } })
+    let rounds = RPSLS.Collections.Rounds.find({}, { sort: { played: -1 } }).fetch()
+
+    return _.unique(rounds, (round) => round.players[0])
   }
 })
 
 Template.matchList.onCreated(function () {
-  this.subscribe('currentMatches')
+  this.subscribe('currentRounds')
 })
 
 Template.registerHelper('matchTitle', (players) => {
