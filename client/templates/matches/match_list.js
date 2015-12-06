@@ -8,4 +8,10 @@ Template.matchList.onCreated(function () {
   this.subscribe('currentMatches')
 })
 
-Template.registerHelper('matchTitle', (players) => (players[0] + ' vs. ' + players[1]))
+Template.registerHelper('matchTitle', (players) => {
+  if (typeof (players) !== 'undefined') {
+    return players[0] + ' vs. ' + players[1]
+  } else {
+    return ''
+  }
+})

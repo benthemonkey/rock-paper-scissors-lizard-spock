@@ -1,37 +1,49 @@
 <template name="matchPage">
   {{#with match}}
     <h1 class="text-center">{{matchTitle players}}</h1>
-    <p>Pick a move:</p>
     <div class="row">
-      <div class="col-xs-6 col-sm-offset-1 col-sm-2">
-        <div class="btn btn-primary btn-block btn-lg" data-move="rock">
+      <div class="col-md-6 text-center">
+        <h3>Pick a move:</h3>
+        <div class="btn btn-primary" data-move="rock">
           <i class="fa fa-hand-rock-o"></i><br>
           Rock
         </div>
-      </div>
-      <div class="col-xs-6 col-sm-2">
-        <div class="btn btn-primary btn-block btn-lg" data-move="paper">
+        <div class="btn btn-primary" data-move="paper">
           <i class="fa fa-hand-paper-o"></i><br>
           Paper
         </div>
-      </div>
-      <div class="col-xs-6 col-sm-2">
-        <div class="btn btn-primary btn-block btn-lg" data-move="scissors">
+        <div class="btn btn-primary" data-move="scissors">
           <i class="fa fa-hand-scissors-o"></i><br>
           Scissors
         </div>
-      </div>
-      <div class="col-xs-6 col-sm-2">
-        <div class="btn btn-primary btn-block btn-lg" data-move="lizard">
+        <div class="btn btn-primary" data-move="lizard">
           <i class="fa fa-hand-lizard-o"></i><br>
           Lizard
         </div>
-      </div>
-      <div class="col-sm-2">
-        <div class="btn btn-primary btn-block btn-lg" data-move="spock">
+        <div class="btn btn-primary" data-move="spock">
           <i class="fa fa-hand-spock-o"></i><br>
           Spock
         </div>
+      </div>
+      <div class="col-md-6">
+        <div class="panel panel-default" style="margin-bottom: 15px;">
+          <div class="panel-heading">
+            <h4 class="panel-title text-center">Score (first to 3)</h4>
+          </div>
+          <div class="panel-body text-center">
+            <div class="row">
+              <div class="col-xs-6">
+                <h4>{{getPlayer 0}}:</h4>
+                <h4>{{getScore 0}}</h4>
+              </div>
+              <div class="col-xs-6">
+                <h4>{{getPlayer 1}}:</h4>
+                <h4>{{getScore 1}}</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+        {{> roundList}}
       </div>
     </div>
   {{/with}}

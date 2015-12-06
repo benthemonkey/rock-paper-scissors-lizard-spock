@@ -1,0 +1,11 @@
+<template name="roundItem">
+  <li class="list-group-item">
+    {{#if isTie}}
+      Tie ({{tieMove}})
+    {{else}}
+      <span class="text-{{playerColor winPlayer}}">[{{winPlayer}}]</span>'s {{winMove}}
+      {{description}}
+      <span class="text-{{playerColor losePlayer}}">[{{losePlayer}}]</span>'s {{loseMove}}
+    {{/if}}
+  </li>
+</template>

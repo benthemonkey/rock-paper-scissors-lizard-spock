@@ -1,9 +1,9 @@
-Meteor.publish('currentMatches', function () {
+Meteor.publish('currentRounds', function () {
   return RPSLS.Collections.Matches.find({ active: true })
 })
 
 Meteor.publish('mostRecentMatch', function () {
-  return RPSLS.Collections.Matches.find({ '$query': {}, '$orderby': { started: -1 } }, { limit: 1 })
+  return RPSLS.Collections.Matches.find({}, { sort: { played: -1 }, limit: 1 })
 })
 
 Meteor.publish('match', function (matchId) {
@@ -12,10 +12,11 @@ Meteor.publish('match', function (matchId) {
   return RPSLS.Collections.Matches.find({ _id: matchId })
 })
 
-Meteor.publish('matchRounds', function (matchId) {
-  check(matchId, String)
+Meteor.publish('myRounds', function () {
+  let username = Meteor.users.findOne({ _id: this.userId }).username
+  check(username, String)
 
-  return RPSLS.Collections.Rounds.find({ matchId: matchId })
+  return RPSLS.Collections.Rounds.find({ players: username }, { sort: { played: -1 } })
 })
 
 Meteor.publish('activeUsers', function () {

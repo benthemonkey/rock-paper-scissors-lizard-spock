@@ -1,5 +1,11 @@
 Template.matchPage.helpers({
-  match: () => RPSLS.Collections.Matches.findOne({ _id: FlowRouter.getParam('matchId') })
+  getPlayer: function (index) {
+    return _.isArray(this.players) ? this.players[index] : ''
+  },
+  getScore: function (index) {
+    return _.isArray(this.players) ? this.score[this.players[index]] : ''
+  },
+  match: () => RPSLS.matchInfo(RPSLS.Collections.Rounds.find({}, { sort: { played: -1 } }).fetch())
 })
 
 Template.matchPage.events({
@@ -9,8 +15,13 @@ Template.matchPage.events({
 })
 
 Template.matchPage.onCreated(function () {
-  let matchId = FlowRouter.getParam('matchId')
-
-  this.subscribe('match', matchId)
-  this.subscribe('matchRounds', matchId)
+  if (Meteor.user()) {
+    this.subscribe('myRounds', Meteor.user().username, {
+      onReady: () => {
+        if (RPSLS.Collections.Rounds.find().count() === 0) {
+          FlowRouter.go('landing')
+        }
+      }
+    })
+  }
 })

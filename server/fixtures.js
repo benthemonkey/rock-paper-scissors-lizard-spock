@@ -2,6 +2,10 @@
 if (RPSLS.Collections.Matches.find().count() === 0) {
   let now = new Date().getTime()
 
+  // we can't allow users named 'players' or 'played'
+  Meteor.users.insert({ username: 'players' })
+  Meteor.users.insert({ username: 'played' })
+
   // create two users
   let alice = 'Alice'
   let bob = 'Bob'
@@ -12,117 +16,69 @@ if (RPSLS.Collections.Matches.find().count() === 0) {
     username: bob
   })
 
-  let match1Id = RPSLS.Collections.Matches.insert({
+  RPSLS.Collections.Matches.insert({
     players: [alice, bob],
-    started: now,
-    active: false,
+    played: now,
+    rounds: [
+      {
+        [bob]: 'rock',
+        [alice]: 'paper',
+        played: now - 80000
+      },
+      {
+        [bob]: 'spock',
+        [alice]: 'paper',
+        played: now - 60000
+      },
+      {
+        [bob]: 'scissors',
+        [alice]: 'paper',
+        played: now - 40000
+      },
+      {
+        [bob]: 'lizard',
+        [alice]: 'paper',
+        played: now - 20000
+      },
+      {
+        [bob]: 'rock',
+        [alice]: 'scissors',
+        played: now
+      }
+    ],
     winner: bob
   })
 
-  let match2Id = RPSLS.Collections.Matches.insert({
+  RPSLS.Collections.Matches.insert({
     players: [alice, bob],
-    started: now,
-    active: false,
-    winner: bob
-  })
-
-  RPSLS.Collections.Rounds.insert({
-    matchId: match1Id,
-    players: [bob, alice],
-    moves: {
-      [bob]: 'rock',
-      [alice]: 'paper'
-    },
-    winner: alice
-  })
-
-  RPSLS.Collections.Rounds.insert({
-    matchId: match1Id,
-    players: [bob, alice],
-    moves: {
-      [bob]: 'spock',
-      [alice]: 'paper'
-    },
-    winner: alice
-  })
-
-  RPSLS.Collections.Rounds.insert({
-    matchId: match1Id,
-    players: [bob, alice],
-    moves: {
-      [bob]: 'scissors',
-      [alice]: 'paper'
-    },
-    winner: bob
-  })
-
-  RPSLS.Collections.Rounds.insert({
-    matchId: match1Id,
-    players: [bob, alice],
-    moves: {
-      [bob]: 'lizard',
-      [alice]: 'paper'
-    },
-    winner: bob
-  })
-
-  RPSLS.Collections.Rounds.insert({
-    matchId: match1Id,
-    players: [bob, alice],
-    moves: {
-      [bob]: 'lizard',
-      [alice]: 'spock'
-    },
-    winner: bob
-  })
-
-  RPSLS.Collections.Rounds.insert({
-    matchId: match2Id,
-    players: [bob, alice],
-    moves: {
-      [bob]: 'rock',
-      [alice]: 'paper'
-    },
-    winner: alice
-  })
-
-  RPSLS.Collections.Rounds.insert({
-    matchId: match2Id,
-    players: [bob, alice],
-    moves: {
-      [bob]: 'spock',
-      [alice]: 'paper'
-    },
-    winner: alice
-  })
-
-  RPSLS.Collections.Rounds.insert({
-    matchId: match2Id,
-    players: [bob, alice],
-    moves: {
-      [bob]: 'scissors',
-      [alice]: 'paper'
-    },
-    winner: bob
-  })
-
-  RPSLS.Collections.Rounds.insert({
-    matchId: match2Id,
-    players: [bob, alice],
-    moves: {
-      [bob]: 'lizard',
-      [alice]: 'paper'
-    },
-    winner: bob
-  })
-
-  RPSLS.Collections.Rounds.insert({
-    matchId: match2Id,
-    players: [bob, alice],
-    moves: {
-      [bob]: 'lizard',
-      [alice]: 'spock'
-    },
+    played: now,
+    rounds: [
+      {
+        [bob]: 'rock',
+        [alice]: 'paper',
+        played: now - 80000
+      },
+      {
+        [bob]: 'spock',
+        [alice]: 'paper',
+        played: now - 60000
+      },
+      {
+        [bob]: 'scissors',
+        [alice]: 'paper',
+        played: now - 40000
+      },
+      {
+        [bob]: 'lizard',
+        [alice]: 'paper',
+        played: now - 20000
+      },
+      {
+        [bob]: 'rock',
+        [alice]: 'scissors',
+        played: now
+      }
+    ],
     winner: bob
   })
 }
