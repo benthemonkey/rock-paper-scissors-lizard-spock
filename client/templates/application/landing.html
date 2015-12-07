@@ -23,8 +23,15 @@
       </div>
     </div>
     {{#if currentUser}}
-    <div id="start" class="btn btn-lg btn-primary btn-block">
-      {{#if searching}}Trying to find a match (30 secs)...{{else}}Find a Match{{/if}}
+    <div class="row">
+      <div class="col-md-6">
+        <div id="findMatch" class="btn btn-lg btn-primary btn-block">
+          {{#if searching}}Trying to find a match (30 secs)...{{else}}Find a Match{{/if}}
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div id="playAgainstComputer" class="btn btn-lg btn-info btn-block">Play against a Computer</div>
+      </div>
     </div>
     {{else}}
     <h2 class="text-center">Sign in / Join to get started</h2>

@@ -1,0 +1,33 @@
+<template name="play">
+  {{#with match}}
+    <h1 class="text-center">{{players.[0]}} vs. {{players.[1]}}</h1>
+    <div class="row">
+      <div class="col-md-6 text-center m-b-md">
+        <h3>Pick a move:</h3>
+        <div class="btn btn-primary" data-move="rock">
+          <i class="fa fa-hand-rock-o"></i><br>
+          Rock
+        </div>
+        <div class="btn btn-primary" data-move="paper">
+          <i class="fa fa-hand-paper-o"></i><br>
+          Paper
+        </div>
+        <div class="btn btn-primary" data-move="scissors">
+          <i class="fa fa-hand-scissors-o"></i><br>
+          Scissors
+        </div>
+        <div class="btn btn-primary" data-move="lizard">
+          <i class="fa fa-hand-lizard-o"></i><br>
+          Lizard
+        </div>
+        <div class="btn btn-primary" data-move="spock">
+          <i class="fa fa-hand-spock-o"></i><br>
+          Spock
+        </div>
+      </div>
+      <div class="col-md-6">
+        {{> matchInfo}}
+      </div>
+    </div>
+  {{/with}}
+</template>

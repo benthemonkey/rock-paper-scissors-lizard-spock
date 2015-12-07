@@ -4,14 +4,14 @@ Template.landing.helpers({
 })
 
 let searchTimeout
-let directToMatchPage = () => {
+let directToPlayPage = () => {
   Meteor.clearTimeout(searchTimeout)
   Session.set('searching', false)
-  FlowRouter.go('matchPage')
+  FlowRouter.go('play')
 }
 
 Template.landing.events({
-  'click #start': function () {
+  'click #findMatch': function () {
     // already searching
     if (Session.get('searching')) {
       return
@@ -29,7 +29,14 @@ Template.landing.events({
       }
 
       if (found) {
-        directToMatchPage()
+        directToPlayPage()
+      }
+    })
+  },
+  'click #playAgainstComputer': function () {
+    Meteor.call('playAgainstComputer', function (err) {
+      if (!err) {
+        directToPlayPage()
       }
     })
   }
@@ -43,7 +50,7 @@ Template.landing.onCreated(function () {
   RPSLS.Collections.Rounds.find().observe({
     added: function (round) {
       if (Meteor.user() && round.players.indexOf(Meteor.user().username) !== -1) {
-        directToMatchPage()
+        directToPlayPage()
       }
     }
   })
