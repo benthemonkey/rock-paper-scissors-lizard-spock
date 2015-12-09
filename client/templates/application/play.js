@@ -21,20 +21,23 @@ let debounceRedirect = _.debounce(function (matchId) {
 }, 500)
 
 Template.play.onCreated(function () {
-  if (Meteor.user()) {
-    this.subscribe('myRounds', Meteor.user().username, {
+  let user = Meteor.user()
+
+  if (user) {
+    this.subscribe('myRounds', user.username, {
       onReady: () => {
-        if (RPSLS.Collections.Rounds.find().count() === 0) {
+        if (RPSLS.Collections.Rounds.find({ players: user.username }).count() === 0) {
           FlowRouter.go('landing')
         }
+      }
+    })
 
-        RPSLS.Collections.Rounds.find({ players: Meteor.user().username }).observe({
-          removed: (round) => {
-            // match ended. redirect to play page
-            console.log(round)
-            debounceRedirect(round.matchId)
-          }
-        })
+    Meteor.users.find({ _id: user._id }).observeChanges({
+      changed: function (id, fields) {
+        if (_.has(fields, 'profile.redirect') && fields.profile.redirect) {
+          FlowRouter.go(fields.profile.redirect.name, fields.profile.redirect.data)
+          Meteor.call('clearRedirect')
+        }
       }
     })
   }
