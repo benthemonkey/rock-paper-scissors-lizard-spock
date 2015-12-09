@@ -16,10 +16,6 @@ Template.play.events({
   }
 })
 
-let debounceRedirect = _.debounce(function (matchId) {
-  FlowRouter.go('matchPage', { matchId })
-}, 500)
-
 Template.play.onCreated(function () {
   let user = Meteor.user()
 
