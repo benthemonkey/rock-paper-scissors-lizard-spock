@@ -4,11 +4,6 @@ Template.landing.helpers({
 })
 
 let searchTimeout
-let directToPlayPage = () => {
-  Meteor.clearTimeout(searchTimeout)
-  Session.set('searching', false)
-  FlowRouter.go('play')
-}
 
 Template.landing.events({
   'click #findMatch': function () {
@@ -23,37 +18,22 @@ Template.landing.events({
       Session.set('searching', false)
     }, 30000)
 
-    Meteor.call('findMatch', function (err, found) {
-      if (err) {
-        return
-      }
-
-      if (found) {
-        directToPlayPage()
-      }
-    })
+    Meteor.call('findMatch')
   },
   'click #playAgainstComputer': function () {
-    Meteor.call('playAgainstComputer', function (err) {
-      if (!err) {
-        directToPlayPage()
-      }
-    })
+    Meteor.call('playAgainstComputer')
   }
+})
+
+Template.landing.onDestroyed(function () {
+  Meteor.clearTimeout(searchTimeout)
+  Session.set('searching', false)
 })
 
 Template.landing.onCreated(function () {
   this.subscribe('activeUsers')
   this.subscribe('mostRecentMatch')
   this.subscribe('rounds')
-
-  RPSLS.Collections.Rounds.find().observe({
-    added: function (round) {
-      if (Meteor.user() && round.players.indexOf(Meteor.user().username) !== -1) {
-        directToPlayPage()
-      }
-    }
-  })
 
   Meteor.setInterval(function () {
     let mostRecent = RPSLS.Collections.Matches.findOne()

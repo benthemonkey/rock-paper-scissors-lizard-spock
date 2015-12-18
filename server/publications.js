@@ -12,15 +12,10 @@ Meteor.publish('match', function (matchId) {
   return RPSLS.Collections.Matches.find({ _id: matchId })
 })
 
-Meteor.publish('myRounds', function () {
-  if (!this.userId) {
-    return []
-  }
+Meteor.publish('matchRounds', function (matchId) {
+  check(matchId, String)
 
-  let username = Meteor.users.findOne({ _id: this.userId }).username
-  check(username, String)
-
-  return RPSLS.Collections.Rounds.find({ players: username }, { sort: { played: -1 } })
+  return RPSLS.Collections.Rounds.find({ matchId: matchId }, { sort: { played: -1 } })
 })
 
 Meteor.publish('activeUsers', function () {

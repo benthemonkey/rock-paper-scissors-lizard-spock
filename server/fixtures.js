@@ -25,32 +25,42 @@ if (RPSLS.Collections.Matches.find().count() === 0) {
     rounds: [
       {
         players: [alice, bob],
-        [bob]: 'rock',
-        [alice]: 'paper',
+        moves: {
+          [bob]: 'rock',
+          [alice]: 'paper'
+        },
         played: now - 80000
       },
       {
         players: [alice, bob],
-        [bob]: 'spock',
-        [alice]: 'paper',
+        moves: {
+          [bob]: 'spock',
+          [alice]: 'paper'
+        },
         played: now - 60000
       },
       {
         players: [alice, bob],
-        [bob]: 'scissors',
-        [alice]: 'paper',
+        moves: {
+          [bob]: 'scissors',
+          [alice]: 'paper'
+        },
         played: now - 40000
       },
       {
         players: [alice, bob],
-        [bob]: 'lizard',
-        [alice]: 'paper',
+        moves: {
+          [bob]: 'lizard',
+          [alice]: 'paper'
+        },
         played: now - 20000
       },
       {
         players: [alice, bob],
-        [bob]: 'rock',
-        [alice]: 'scissors',
+        moves: {
+          [bob]: 'rock',
+          [alice]: 'scissors'
+        },
         played: now
       }
     ],
@@ -63,32 +73,42 @@ if (RPSLS.Collections.Matches.find().count() === 0) {
     rounds: [
       {
         players: [alice, bob],
-        [bob]: 'rock',
-        [alice]: 'paper',
+        moves: {
+          [bob]: 'rock',
+          [alice]: 'paper'
+        },
         played: now - 80000
       },
       {
         players: [alice, bob],
-        [bob]: 'spock',
-        [alice]: 'paper',
+        moves: {
+          [bob]: 'spock',
+          [alice]: 'paper'
+        },
         played: now - 60000
       },
       {
         players: [alice, bob],
-        [bob]: 'scissors',
-        [alice]: 'paper',
+        moves: {
+          [bob]: 'scissors',
+          [alice]: 'paper'
+        },
         played: now - 40000
       },
       {
         players: [alice, bob],
-        [bob]: 'lizard',
-        [alice]: 'paper',
+        moves: {
+          [bob]: 'lizard',
+          [alice]: 'paper'
+        },
         played: now - 20000
       },
       {
         players: [alice, bob],
-        [bob]: 'rock',
-        [alice]: 'scissors',
+        moves: {
+          [bob]: 'rock',
+          [alice]: 'scissors'
+        },
         played: now
       }
     ],

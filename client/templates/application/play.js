@@ -17,24 +17,13 @@ Template.play.events({
 })
 
 Template.play.onCreated(function () {
-  let user = Meteor.user()
+  let matchId = FlowRouter.getParam('matchId')
 
-  if (user) {
-    this.subscribe('myRounds', user.username, {
-      onReady: () => {
-        if (RPSLS.Collections.Rounds.find({ players: user.username }).count() === 0) {
-          FlowRouter.go('landing')
-        }
+  this.subscribe('matchRounds', matchId, {
+    onReady: () => {
+      if (RPSLS.Collections.Rounds.find({ matchId: matchId }).count() === 0) {
+        BlazeLayout.render('layout', { yield: 'notFound' })
       }
-    })
-
-    Meteor.users.find({ _id: user._id }).observeChanges({
-      changed: function (id, fields) {
-        if (_.has(fields, 'profile.redirect') && fields.profile.redirect) {
-          FlowRouter.go(fields.profile.redirect.name, fields.profile.redirect.data)
-          Meteor.call('clearRedirect')
-        }
-      }
-    })
-  }
+    }
+  })
 })
