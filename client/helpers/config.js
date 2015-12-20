@@ -5,13 +5,11 @@ Accounts.ui.config({
 })
 
 Tracker.autorun(function (computation) {
-  try {
-    UserStatus.startMonitor({
-      threshold: 30 * 1000,
-      interval: 20 * 1000,
-      idleOnBlur: true
-    })
+  UserStatus.startMonitor({
+    threshold: 30 * 1000,
+    interval: 20 * 1000,
+    idleOnBlur: true
+  })
 
-    computation.stop()
-  } catch (e) {}
+  computation.stop()
 })

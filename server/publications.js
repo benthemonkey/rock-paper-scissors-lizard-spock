@@ -1,9 +1,15 @@
 Meteor.publish('currentRounds', function () {
-  return RPSLS.Collections.Rounds.find({})
+  return RPSLS.Collections.Rounds.find(
+    {},
+    {
+      sort: { played: -1 },
+      fields: { played: true, players: true, matchId: true }
+    }
+  )
 })
 
 Meteor.publish('mostRecentMatch', function () {
-  return RPSLS.Collections.Matches.find({}, { sort: { played: -1 }, limit: 1 })
+  return RPSLS.Collections.Matches.find({}, { sort: { played: -1 }, limit: 1, fields: { played: true } })
 })
 
 Meteor.publish('match', function (matchId) {

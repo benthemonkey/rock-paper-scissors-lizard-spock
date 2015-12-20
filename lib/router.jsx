@@ -5,16 +5,16 @@ let checkLoggedIn = function (ctx, redirect) {
 }
 
 FlowRouter.route('/', {
-  name: 'landing',
+  name: 'index',
   action: function () {
-    BlazeLayout.render('layout', { yield: 'landing' })
+    ReactLayout.render(RPSLS.Components.Layout, { yield: <RPSLS.Components.Index /> })
   }
 })
 
 FlowRouter.notFound = {
   name: 'notFound',
   action: function () {
-    BlazeLayout.render('layout', { yield: 'notFound' })
+    ReactLayout.render(RPSLS.Components.Layout, { yield: <RPSLS.Components.NotFound /> })
   }
 }
 
@@ -22,13 +22,13 @@ FlowRouter.route('/play/:matchId', {
   name: 'play',
   triggersEnter: [checkLoggedIn],
   action: function () {
-    BlazeLayout.render('layout', { yield: 'play' })
+    ReactLayout.render(RPSLS.Components.Layout, { yield: <RPSLS.Components.Play /> })
   }
 })
 
 FlowRouter.route('/matches/:matchId', {
   name: 'matchPage',
   action: function () {
-    BlazeLayout.render('layout', { yield: 'matchPage' })
+    ReactLayout.render(RPSLS.Components.Layout, { yield: <RPSLS.Components.Match /> })
   }
 })

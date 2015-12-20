@@ -24,18 +24,17 @@
   "standard": {
     "parser": "babel-eslint",
     "globals": [
-      "$",
       "_",
-      "BlazeLayout",
       "check",
       "Counts",
       "FlowRouter",
       "Meteor",
       "moment",
       "Mongo",
+      "React",
+      "ReactLayout",
+      "ReactMeteorData",
       "RPSLS",
-      "Session",
-      "Template",
       "Tracker"
     ]
   }
