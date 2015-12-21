@@ -3,11 +3,9 @@ RPSLS.Components.Index = React.createClass({
   getMeteorData () {
     Meteor.subscribe('currentRounds')
 
-    let rounds = RPSLS.Collections.Rounds.find({}, { sort: { played: -1 } }).fetch()
-
     return {
       loggedIn: Boolean(Meteor.user()),
-      matches: _.unique(rounds, 'matchId')
+      matches: _.unique(RPSLS.Queries.currentRounds().fetch(), 'matchId')
     }
   },
   render () {

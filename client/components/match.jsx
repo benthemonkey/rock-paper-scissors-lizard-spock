@@ -4,7 +4,7 @@ RPSLS.Components.Match = React.createClass({
     let matchId = FlowRouter.getParam('matchId')
     let subscription = Meteor.subscribe('match', matchId, {
       onReady () {
-        if (!RPSLS.Collections.Matches.findOne({ _id: matchId })) {
+        if (!RPSLS.Queries.match(matchId).fetch()) {
           FlowRouter.go('notFound')
         }
       }
@@ -12,7 +12,7 @@ RPSLS.Components.Match = React.createClass({
 
     return {
       isLoading: !subscription.ready(),
-      match: RPSLS.Collections.Matches.findOne({ _id: matchId })
+      match: RPSLS.Queries.match(matchId).fetch()[0]
     }
   },
   render () {

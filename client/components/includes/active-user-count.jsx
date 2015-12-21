@@ -12,7 +12,7 @@ RPSLS.Components.ActiveUserCount = React.createClass({
     if (this.data.isLoading) {
       return <RPSLS.Components.Loading />
     } else {
-      return <span className='label label-info'>Active Users: { this.data.activeUsers }</span>
+      return <span className='label label-info'>Players Online: { this.data.activeUsers }</span>
     }
   }
 })

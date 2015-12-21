@@ -1,33 +1,11 @@
-Meteor.publish('currentRounds', function () {
-  return RPSLS.Collections.Rounds.find(
-    {},
-    {
-      sort: { played: -1 },
-      fields: { played: true, players: true, matchId: true }
-    }
-  )
-})
-
-Meteor.publish('mostRecentMatch', function () {
-  return RPSLS.Collections.Matches.find({}, { sort: { played: -1 }, limit: 1, fields: { played: true } })
-})
-
-Meteor.publish('match', function (matchId) {
+Meteor.publish('currentRounds', () => RPSLS.Queries.currentRounds())
+Meteor.publish('mostRecentMatch', () => RPSLS.Queries.mostRecentMatch())
+Meteor.publish('match', (matchId) => {
   check(matchId, String)
-
-  return RPSLS.Collections.Matches.find({ _id: matchId })
+  return RPSLS.Queries.match(matchId)
 })
-
-Meteor.publish('matchRounds', function (matchId) {
+Meteor.publish('matchRounds', (matchId) => {
   check(matchId, String)
-
-  return RPSLS.Collections.Rounds.find({ matchId: matchId }, { sort: { played: -1 } })
+  return RPSLS.Queries.matchRounds(matchId)
 })
-
-Meteor.publish('activeUsers', function () {
-  Counts.publish(
-    this,
-    'activeUsers',
-    Meteor.users.find({ 'status.idle': false, 'status.online': true }, { fields: { _id: true } })
-  )
-})
+Meteor.publish('activeUsers', function () { Counts.publish(this, 'activeUsers', RPSLS.Queries.activeUsers()) })

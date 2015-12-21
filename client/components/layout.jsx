@@ -4,7 +4,7 @@ RPSLS.Components.Layout = React.createClass({
   },
   render () {
     return (
-      <div className='container'>
+      <div className='container-fluid'>
         <RPSLS.Components.Header />
         { this.props.yield }
       </div>

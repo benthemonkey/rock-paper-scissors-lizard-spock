@@ -23,12 +23,12 @@ RPSLS.Components.Matches.StartButtons = React.createClass({
     if (this.props.loggedIn) {
       return (
         <div className='row'>
-          <div className='col-md-6'>
+          <div className='col-sm-6'>
             <div onClick={ this.findMatch } className='btn btn-lg btn-primary btn-block'>
-              { this.state.searching ? 'Trying to find a match (30 secs)...' : 'Find a Match' }
+              { this.state.searching ? 'Trying to join a game (30 secs)...' : 'Play against another Player' }
             </div>
           </div>
-          <div className='col-md-6'>
+          <div className='col-sm-6'>
             <div onClick={ this.playAgainstComputer } className='btn btn-lg btn-info btn-block'>Play against a Computer</div>
           </div>
         </div>

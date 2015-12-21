@@ -4,7 +4,7 @@ RPSLS.Components.Play = React.createClass({
     let matchId = FlowRouter.getParam('matchId')
     let subscription = Meteor.subscribe('matchRounds', matchId, {
       onReady () {
-        if (RPSLS.Collections.Rounds.find({ matchId: matchId }).count() === 0) {
+        if (RPSLS.Queries.matchRounds(matchId).count() === 0) {
           FlowRouter.go('notFound')
         }
       }
@@ -12,7 +12,7 @@ RPSLS.Components.Play = React.createClass({
 
     return {
       isLoading: !subscription.ready(),
-      rounds: RPSLS.Collections.Rounds.find({ matchId: matchId }, { sort: { played: -1 } }).fetch()
+      rounds: RPSLS.Queries.matchRounds(matchId).fetch()
     }
   },
   sendMove (event) {
