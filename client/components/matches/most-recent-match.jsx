@@ -10,7 +10,7 @@ RPSLS.Components.Matches.MostRecentMatch = React.createClass({
 
     return {
       isLoading: !subscription.ready(),
-      mostRecentMatch: RPSLS.Collections.Matches.findOne({}, { sort: { played: -1 } })
+      mostRecentMatch: RPSLS.Queries.mostRecentMatch().fetch()[0]
     }
   },
   update () {
