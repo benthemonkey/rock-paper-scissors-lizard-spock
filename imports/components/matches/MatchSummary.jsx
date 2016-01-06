@@ -1,4 +1,7 @@
-RPSLS.Components.Matches.Summary = React.createClass({
+import React from 'react'
+import MatchRoundResult from '/app/imports/components/matches/MatchRoundResult.jsx'
+
+const MatchSummary = React.createClass({
   propTypes: {
     rounds: React.PropTypes.array
   },
@@ -12,9 +15,7 @@ RPSLS.Components.Matches.Summary = React.createClass({
       return (
         <ul className='list-group'>
           {
-            results.map((result, i) => {
-              return <RPSLS.Components.Matches.RoundResult key={ i } players={ players } result={ result } />
-            })
+            results.map((result, i) => <MatchRoundResult key={ i } players={ players } result={ result } />)
           }
         </ul>
       )
@@ -50,3 +51,5 @@ RPSLS.Components.Matches.Summary = React.createClass({
     )
   }
 })
+
+export default MatchSummary

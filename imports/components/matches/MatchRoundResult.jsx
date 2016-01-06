@@ -1,4 +1,6 @@
-RPSLS.Components.Matches.RoundResult = React.createClass({
+import React from 'react'
+
+const MatchRoundResult = React.createClass({
   propTypes: {
     players: React.PropTypes.array.isRequired,
     result: React.PropTypes.object.isRequired
@@ -28,3 +30,5 @@ RPSLS.Components.Matches.RoundResult = React.createClass({
     }
   }
 })
+
+export default MatchRoundResult

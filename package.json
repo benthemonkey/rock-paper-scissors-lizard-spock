@@ -19,6 +19,11 @@
   "homepage": "https://github.com/benthemonkey/rock-paper-scissors-lizard-spock#readme",
   "devDependencies": {
     "babel-eslint": "^4.1.6",
+    "babel-register": "^6.3.13",
+    "chai": "^3.4.1",
+    "mocha": "^2.3.4",
+    "sinon": "^1.17.2",
+    "sinon-chai": "^2.8.0",
     "standard": "^5.4.1"
   },
   "standard": {
@@ -29,13 +34,18 @@
       "Counts",
       "FlowRouter",
       "Meteor",
-      "moment",
       "Mongo",
-      "React",
-      "ReactLayout",
       "ReactMeteorData",
+      "ReactLayout",
       "RPSLS",
       "Tracker"
     ]
+  },
+  "dependencies": {
+    "history": "^1.17.0",
+    "lodash": "^3.10.1",
+    "react": "^0.14.5",
+    "react-dom": "^0.14.5",
+    "react-timeago": "^2.2.1"
   }
 }

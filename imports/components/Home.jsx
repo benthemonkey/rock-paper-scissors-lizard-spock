@@ -1,16 +1,25 @@
-RPSLS.Components.Index = React.createClass({
+import React from 'react'
+import _ from 'lodash'
+import StartButtons from '/app/imports/components/Home/StartButtons.jsx'
+import ActiveUserCount from '/app/imports/components/Home/ActiveUserCount.jsx'
+import MostRecentMatch from '/app/imports/components/matches/MostRecentMatch.jsx'
+import MatchList from '/app/imports/components/matches/MatchList.jsx'
+
+import { currentRounds } from '/app/lib/queries'
+
+const Home = React.createClass({
   mixins: [ReactMeteorData],
   getMeteorData () {
     Meteor.subscribe('currentRounds')
 
     return {
       loggedIn: Boolean(Meteor.user()),
-      matches: _.unique(RPSLS.Queries.currentRounds().fetch(), 'matchId')
+      matches: _.unique(currentRounds().fetch(), 'matchId')
     }
   },
   render () {
     return (
-      <div>
+    <div>
         <div className='jumbotron'>
           <div className='row text-center'>
             <div className='col-xs-4 col-sm-2 col-sm-offset-1'>
@@ -34,7 +43,7 @@ RPSLS.Components.Index = React.createClass({
               <h4>Spock</h4>
             </div>
           </div>
-          <RPSLS.Components.Matches.StartButtons loggedIn={ this.data.loggedIn } />
+          <StartButtons loggedIn={ this.data.loggedIn } />
         </div>
         <div className='row'>
           <div className='col-sm-6'>
@@ -42,7 +51,7 @@ RPSLS.Components.Index = React.createClass({
               <div className='panel-heading'>
                 <h4 className='panel-title text-center'>Matches in Progress</h4>
               </div>
-              <RPSLS.Components.Matches.List matches={ this.data.matches } />
+              <MatchList matches={ this.data.matches } />
             </div>
             <div className='panel panel-default'>
               <div className='panel-heading'>
@@ -58,10 +67,10 @@ RPSLS.Components.Index = React.createClass({
           </div>
           <div className='col-sm-6'>
             <h3 className='text-center'>
-              <RPSLS.Components.ActiveUserCount />
+              <ActiveUserCount />
             </h3>
             <h3 className='text-center'>
-              <RPSLS.Components.Matches.MostRecentMatch />
+              <MostRecentMatch />
             </h3>
           </div>
         </div>
@@ -69,3 +78,5 @@ RPSLS.Components.Index = React.createClass({
     )
   }
 })
+
+export default Home

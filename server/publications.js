@@ -1,11 +1,15 @@
-Meteor.publish('currentRounds', () => RPSLS.Queries.currentRounds())
-Meteor.publish('mostRecentMatch', () => RPSLS.Queries.mostRecentMatch())
+import { currentRounds, mostRecentMatch, match, matchRounds, activeUsers } from '/app/lib/queries'
+
+global._ = require('lodash')
+
+Meteor.publish('currentRounds', () => currentRounds())
+Meteor.publish('mostRecentMatch', () => mostRecentMatch())
 Meteor.publish('match', (matchId) => {
   check(matchId, String)
-  return RPSLS.Queries.match(matchId)
+  return match(matchId)
 })
 Meteor.publish('matchRounds', (matchId) => {
   check(matchId, String)
-  return RPSLS.Queries.matchRounds(matchId)
+  return matchRounds(matchId)
 })
-Meteor.publish('activeUsers', function () { Counts.publish(this, 'activeUsers', RPSLS.Queries.activeUsers()) })
+Meteor.publish('activeUsers', function () { Counts.publish(this, 'activeUsers', activeUsers()) })

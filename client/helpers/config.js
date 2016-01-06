@@ -1,8 +1,8 @@
 /* global Accounts, UserStatus */
 
-Accounts.ui.config({
-  passwordSignupFields: 'USERNAME_ONLY'
-})
+// Accounts.ui.config({
+//   passwordSignupFields: 'USERNAME_ONLY'
+// })
 
 // this sometimes errors...
 Meteor.startup(() => {

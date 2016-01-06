@@ -1,4 +1,7 @@
-RPSLS.Components.ActiveUserCount = React.createClass({
+import React from 'react'
+import Loading from '/app/imports/components/general/Loading.jsx'
+
+const ActiveUserCount = React.createClass({
   mixins: [ReactMeteorData],
   getMeteorData () {
     let subscription = Meteor.subscribe('activeUsers')
@@ -10,9 +13,11 @@ RPSLS.Components.ActiveUserCount = React.createClass({
   },
   render () {
     if (this.data.isLoading) {
-      return <RPSLS.Components.Loading />
+      return <Loading />
     } else {
       return <span className='label label-info'>Players Online: { this.data.activeUsers }</span>
     }
   }
 })
+
+export default ActiveUserCount

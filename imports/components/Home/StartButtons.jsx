@@ -1,4 +1,6 @@
-RPSLS.Components.Matches.StartButtons = React.createClass({
+import React from 'react'
+
+const StartButtons = React.createClass({
   propTypes: {
     loggedIn: React.PropTypes.bool.isRequired
   },
@@ -38,3 +40,5 @@ RPSLS.Components.Matches.StartButtons = React.createClass({
     }
   }
 })
+
+export default StartButtons

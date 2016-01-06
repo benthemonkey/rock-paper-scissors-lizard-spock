@@ -1,10 +1,16 @@
-RPSLS.Components.Play = React.createClass({
+import React from 'react'
+import Loading from '/app/imports/components/general/Loading.jsx'
+import MatchSummary from '/app/imports/components/matches/MatchSummary.jsx'
+
+import { matchRounds } from '/app/lib/queries'
+
+const Play = React.createClass({
   mixins: [ReactMeteorData],
   getMeteorData () {
     let matchId = FlowRouter.getParam('matchId')
     let subscription = Meteor.subscribe('matchRounds', matchId, {
       onReady () {
-        if (RPSLS.Queries.matchRounds(matchId).count() === 0) {
+        if (matchRounds(matchId).count() === 0) {
           FlowRouter.go('notFound')
         }
       }
@@ -12,7 +18,7 @@ RPSLS.Components.Play = React.createClass({
 
     return {
       isLoading: !subscription.ready(),
-      rounds: RPSLS.Queries.matchRounds(matchId).fetch()
+      rounds: matchRounds(matchId).fetch()
     }
   },
   sendMove (event) {
@@ -20,7 +26,7 @@ RPSLS.Components.Play = React.createClass({
   },
   render () {
     if (this.data.isLoading || this.data.rounds.length === 0) {
-      return <RPSLS.Components.Loading size='4' />
+      return <Loading size='4' />
     } else {
       return (
         <div>
@@ -50,7 +56,7 @@ RPSLS.Components.Play = React.createClass({
               </div>
             </div>
             <div className='col-md-6'>
-              <RPSLS.Components.Matches.Summary rounds={ this.data.rounds } />
+              <MatchSummary rounds={ this.data.rounds } />
             </div>
           </div>
         </div>
@@ -58,3 +64,5 @@ RPSLS.Components.Play = React.createClass({
     }
   }
 })
+
+export default Play

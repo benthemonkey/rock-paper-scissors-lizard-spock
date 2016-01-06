@@ -1,4 +1,6 @@
-RPSLS.Components.Loading = React.createClass({
+import React from 'react'
+
+const Loading = React.createClass({
   propTypes: {
     size: React.PropTypes.oneOf(['1', '2', '3', '4'])
   },
@@ -18,3 +20,5 @@ RPSLS.Components.Loading = React.createClass({
     return <div className='text-center'><i className={ this.getSizeClass() }></i></div>
   }
 })
+
+export default Loading

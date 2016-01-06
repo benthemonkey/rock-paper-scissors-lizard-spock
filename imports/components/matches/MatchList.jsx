@@ -1,4 +1,7 @@
-RPSLS.Components.Matches.List = React.createClass({
+import React from 'react'
+import { MatchListItem } from '/app/imports/components/matches/MatchListItem.jsx'
+
+const MatchList = React.createClass({
   propTypes: {
     matches: React.PropTypes.array.isRequired
   },
@@ -6,7 +9,7 @@ RPSLS.Components.Matches.List = React.createClass({
     if (this.props.matches.length > 0) {
       return (
         <ul className='list-group'>
-          { this.props.matches.map((match) => <RPSLS.Components.Matches.Item key={ match._id } match={ match } />) }
+          { this.props.matches.map((match) => <MatchListItem key={ match._id } match={ match } />) }
         </ul>
       )
     } else {
@@ -14,3 +17,5 @@ RPSLS.Components.Matches.List = React.createClass({
     }
   }
 })
+
+export default MatchList
