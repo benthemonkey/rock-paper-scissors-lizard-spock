@@ -1,5 +1,5 @@
 import React from 'react'
-import { MatchListItem } from '/app/imports/components/matches/MatchListItem.jsx'
+import MatchListItem from '/app/imports/components/matches/MatchListItem.jsx'
 
 const MatchList = React.createClass({
   propTypes: {

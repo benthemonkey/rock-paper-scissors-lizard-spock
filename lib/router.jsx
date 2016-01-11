@@ -13,28 +13,28 @@ let checkLoggedIn = function (ctx, redirect) {
 FlowRouter.route('/', {
   name: 'index',
   action: function () {
-    ReactLayout.render(Layout, { yield: React.createElement(Home, null) })
+    ReactLayout.render(Layout, { yield: <Home /> })
   }
 })
 
 FlowRouter.route('/login', {
   name: 'login',
   action: function () {
-    ReactLayout.render(Layout, { yield: React.createElement(SignIn, null) })
+    ReactLayout.render(Layout, { yield: <SignIn /> })
   }
 })
 
 FlowRouter.route('/join', {
   name: 'join',
   action: function () {
-    ReactLayout.render(Layout, { yield: React.createElement(Join, null) })
+    ReactLayout.render(Layout, { yield: <Join /> })
   }
 })
 
 FlowRouter.notFound = {
   name: 'notFound',
   action: function () {
-    ReactLayout.render(Layout, { yield: React.createElement(NotFound, null) })
+    ReactLayout.render(Layout, { yield: <NotFound /> })
   }
 }
 
@@ -42,13 +42,13 @@ FlowRouter.route('/play/:matchId', {
   name: 'play',
   // triggersEnter: [checkLoggedIn],
   action: function () {
-    ReactLayout.render(Layout, { yield: React.createElement(Play, null) })
+    ReactLayout.render(Layout, { yield: <Play /> })
   }
 })
 
 FlowRouter.route('/matches/:matchId', {
   name: 'matchPage',
   action: function () {
-    ReactLayout.render(Layout, { yield: React.createElement(Match, null) })
+    ReactLayout.render(Layout, { yield: <Match /> })
   }
 })

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Accounts } from 'accounts-base'
 import AuthErrors from '/app/imports/components/general/AuthErrors.jsx'
 import FormInput from '/app/imports/components/general/FormInput.jsx'
 

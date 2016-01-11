@@ -1,5 +1,7 @@
+import Matches from '/app/lib/collections/matches'
+
 // Fixture data
-if (RPSLS.Collections.Matches.find().count() === 0) {
+if (Matches.find().count() === 0) {
   let now = new Date().getTime()
 
   // Bot for playing against a computer
@@ -19,7 +21,7 @@ if (RPSLS.Collections.Matches.find().count() === 0) {
     username: bob
   })
 
-  RPSLS.Collections.Matches.insert({
+  Matches.insert({
     players: [alice, bob],
     played: now,
     rounds: [
@@ -67,7 +69,7 @@ if (RPSLS.Collections.Matches.find().count() === 0) {
     winner: bob
   })
 
-  RPSLS.Collections.Matches.insert({
+  Matches.insert({
     players: [alice, bob],
     played: now,
     rounds: [

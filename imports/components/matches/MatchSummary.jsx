@@ -1,5 +1,6 @@
 import React from 'react'
 import MatchRoundResult from '/app/imports/components/matches/MatchRoundResult.jsx'
+import { matchInfo } from '/app/lib/helpers'
 
 const MatchSummary = React.createClass({
   propTypes: {
@@ -24,11 +25,11 @@ const MatchSummary = React.createClass({
     }
   },
   render () {
-    let matchInfo = RPSLS.matchInfo(this.props.rounds)
+    let info = matchInfo(this.props.rounds)
 
     return (
       <div>
-        { this.displayWinner(matchInfo.winner) }
+        { this.displayWinner(info.winner) }
         <div className='panel panel-default m-b-md'>
           <div className='panel-heading'>
             <h4 className='panel-title text-center'>Score (first to 3)</h4>
@@ -36,16 +37,16 @@ const MatchSummary = React.createClass({
           <div className='panel-body text-center'>
             <div className='row'>
               <div className='col-xs-6'>
-                <h4>{ matchInfo.players[0] }:</h4>
-                <h4>{ matchInfo.score[matchInfo.players[0]] }</h4>
+                <h4>{ info.players[0] }:</h4>
+                <h4>{ info.score[info.players[0]] }</h4>
               </div>
               <div className='col-xs-6'>
-                <h4>{ matchInfo.players[1] }:</h4>
-                <h4>{ matchInfo.score[matchInfo.players[1]] }</h4>
+                <h4>{ info.players[1] }:</h4>
+                <h4>{ info.score[info.players[1]] }</h4>
               </div>
             </div>
           </div>
-          { this.resultsList(matchInfo.players, matchInfo.results) }
+          { this.resultsList(info.players, info.results) }
         </div>
       </div>
     )
