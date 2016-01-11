@@ -1,6 +1,6 @@
 import React from 'react'
-import AuthErrors from '/app/imports/components/general/AuthErrors.jsx'
-import FormInput from '/app/imports/components/general/FormInput.jsx'
+import AuthErrors from '/imports/components/general/AuthErrors.jsx'
+import FormInput from '/imports/components/general/FormInput.jsx'
 
 const SignIn = React.createClass({
   getInitialState () {

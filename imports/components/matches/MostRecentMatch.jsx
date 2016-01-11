@@ -1,7 +1,7 @@
 import React from 'react'
 import TimeAgo from 'react-timeago'
-import Loading from '/app/imports/components/general/Loading.jsx'
-import { mostRecentMatch } from '/app/lib/queries'
+import Loading from '/imports/components/general/Loading.jsx'
+import { mostRecentMatch } from '/lib/queries'
 
 const MostRecentMatch = React.createClass({
   mixins: [ReactMeteorData],

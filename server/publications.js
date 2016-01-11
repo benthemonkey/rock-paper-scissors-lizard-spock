@@ -1,4 +1,4 @@
-import { currentRounds, mostRecentMatch, match, matchRounds, activeUsers } from '/app/lib/queries'
+import { currentRounds, mostRecentMatch, match, matchRounds, activeUsers } from '/lib/queries'
 
 global._ = require('lodash')
 

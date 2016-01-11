@@ -1,8 +1,8 @@
 import React from 'react'
-import Loading from '/app/imports/components/general/Loading.jsx'
-import MatchSummary from '/app/imports/components/matches/MatchSummary.jsx'
+import Loading from '/imports/components/general/Loading.jsx'
+import MatchSummary from '/imports/components/matches/MatchSummary.jsx'
 
-import { matchRounds } from '/app/lib/queries'
+import { matchRounds } from '/lib/queries'
 
 const Play = React.createClass({
   mixins: [ReactMeteorData],

@@ -1,6 +1,6 @@
 import React from 'react'
-import MatchRoundResult from '/app/imports/components/matches/MatchRoundResult.jsx'
-import { matchInfo } from '/app/lib/helpers'
+import MatchRoundResult from '/imports/components/matches/MatchRoundResult.jsx'
+import { matchInfo } from '/lib/helpers'
 
 const MatchSummary = React.createClass({
   propTypes: {

@@ -1,5 +1,5 @@
 import React from 'react'
-import Header from '/app/imports/components/Layout/Header.jsx'
+import Header from '/imports/components/Layout/Header.jsx'
 
 export default React.createClass({
   propTypes: {

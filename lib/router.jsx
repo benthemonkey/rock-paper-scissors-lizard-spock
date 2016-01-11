@@ -1,8 +1,8 @@
 import React from 'react'
-import { FlowRouter } from 'kadira:flow-router'
-import { ReactLayout } from 'kadira:react-layout'
+import { FlowRouter } from 'meteor/kadira:flow-router'
+import { ReactLayout } from 'meteor/kadira:react-layout'
 
-import { Layout, Home, Join, Match, NotFound, Play, SignIn } from '/app/imports/components'
+import { Layout, Home, Join, Match, NotFound, Play, SignIn } from '/imports/components'
 
 let checkLoggedIn = function (ctx, redirect) {
   if (!Meteor.userId()) {

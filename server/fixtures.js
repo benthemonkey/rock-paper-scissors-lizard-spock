@@ -1,4 +1,4 @@
-import Matches from '/app/lib/collections/matches'
+import Matches from '/lib/collections/matches'
 
 // Fixture data
 if (Matches.find().count() === 0) {

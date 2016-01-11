@@ -1,5 +1,5 @@
 import React from 'react'
-import Loading from '/app/imports/components/general/Loading.jsx'
+import Loading from '/imports/components/general/Loading.jsx'
 
 const ActiveUserCount = React.createClass({
   mixins: [ReactMeteorData],

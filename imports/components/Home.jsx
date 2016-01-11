@@ -1,11 +1,11 @@
 import React from 'react'
 import _ from 'lodash'
-import StartButtons from '/app/imports/components/Home/StartButtons.jsx'
-import ActiveUserCount from '/app/imports/components/Home/ActiveUserCount.jsx'
-import MostRecentMatch from '/app/imports/components/matches/MostRecentMatch.jsx'
-import MatchList from '/app/imports/components/matches/MatchList.jsx'
+import StartButtons from '/imports/components/Home/StartButtons.jsx'
+import ActiveUserCount from '/imports/components/Home/ActiveUserCount.jsx'
+import MostRecentMatch from '/imports/components/matches/MostRecentMatch.jsx'
+import MatchList from '/imports/components/matches/MatchList.jsx'
 
-import { currentRounds } from '/app/lib/queries'
+import { currentRounds } from '/lib/queries'
 
 const Home = React.createClass({
   mixins: [ReactMeteorData],
